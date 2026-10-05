@@ -1,16 +1,12 @@
-function getPublishedArticles(response) {
-  return response.filter(article => article.status === "published");
-}
+const getPublishedArticles = (response) =>
+  response.filter((article) => article.status === "published");
 
-function toArticleSummary(article) {
-  return {
-    id: article.id,
-    title: article.title,
-    authorName: article.author.name,
-    views: article.views
-  };
-}
+const toArticleSummary = (article) => ({
+  id: article.id,
+  title: article.title,
+  authorName: article.author.name,
+  views: article.views
+});
 
-function normalizeArticles(response) {
-  return getPublishedArticles(response).map(toArticleSummary);
-}
+const normalizeArticles = (response) =>
+  getPublishedArticles(response).map((article) => toArticleSummary(article));
