@@ -1,0 +1,191 @@
+/* ==========================================
+   Global Reset & Base Styles
+   ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #0f172a;
+  /* Dark webpage background */
+  color: #f8fafc;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================
+   Header & Navigation
+   ========================================== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #1e293b;
+  border-bottom: 1px solid #334155;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav a:hover {
+  color: #f8fafc;
+}
+
+/* ==========================================
+   Main Content Area
+   ========================================== */
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+  color: #f8fafc;
+}
+
+.hero p {
+  font-size: 1.125rem;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   Footer
+   ========================================== */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1e293b;
+  color: #64748b;
+  font-size: 0.875rem;
+  border-top: 1px solid #334155;
+}
+
+/* ==========================================
+   Cookie Consent Popup Styling
+   ========================================== */
+.cookie-popup {
+  /* Positioning near the bottom center of the viewport */
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Responsive Width & Sizing */
+  width: calc(100% - 32px);
+  max-width: 480px;
+
+  /* Slightly lighter dark background for contrast */
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 24px;
+
+  /* Subtle Box Shadow for Depth */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+
+  /* Flexbox Layout for Internal Spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* Smooth appearance */
+  z-index: 1000;
+}
+
+.cookie-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cookie-icon {
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.cookie-header h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.cookie-popup p {
+  font-size: 0.9375rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+/* Button Container & Accept Button */
+.cookie-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.accept-btn {
+  background-color: #3b82f6;
+  /* Contrasting primary blue color */
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Button Hover State */
+.accept-btn:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Button Active & Focus States */
+.accept-btn:active {
+  transform: translateY(0);
+}
+
+.accept-btn:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 480px) {
+  .cookie-popup {
+    bottom: 16px;
+    padding: 20px;
+  }
+
+  .accept-btn {
+    width: 100%;
+    /* Full width button on small mobile screens */
+    text-align: center;
+  }
+}

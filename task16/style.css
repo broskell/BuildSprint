@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #111;
+}
+
+.card {
+  width: min(760px, calc(100% - 32px));
+  padding: 28px 32px 24px;
+  border: 1px solid #111;
+  border-radius: 16px;
+}
+
+.tabs {
+  display: flex;
+  gap: 28px;
+}
+
+.tab {
+  padding: 0 0 8px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: #b0b0b0;
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: #111;
+  border-bottom-color: #111;
+}
+
+.instructions,
+.note {
+  margin: 22px 0 0;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.panel {
+  margin-top: 22px;
+  min-height: 150px;
+  padding: 48px 24px;
+  border-radius: 18px;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+
+.panel p {
+  margin: 0;
+}
+
+.panel p + p {
+  margin-top: 12px;
+}
+
+.panel[hidden] {
+  display: none;
+}

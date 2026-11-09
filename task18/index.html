@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <main class="container">
+    <h1 class="heading">Write your Message</h1>
+    
+    <div class="textarea-wrapper">
+      <textarea 
+        id="message-input" 
+        placeholder="Start typing ..." 
+        maxlength="250"
+        rows="6"
+      ></textarea>
+      <div id="char-counter" class="char-counter" aria-live="polite">0 / 250</div>
+    </div>
+  </main>
+
+</body>
+</html>

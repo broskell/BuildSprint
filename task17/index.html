@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Consent Demo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- Main Webpage Content -->
+  <header class="header">
+    <div class="logo">⚡ DevSpace</div>
+    <nav class="nav">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">About</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <section class="hero">
+      <h1>Welcome to DevSpace</h1>
+      <p>Explore clean, modern web development built with foundational HTML, CSS, and Vanilla JavaScript.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 DevSpace. All rights reserved.</p>
+  </footer>
+
+  <!-- Cookie Consent Popup Container -->
+  <div id="cookie-popup" class="cookie-popup" role="dialog" aria-live="polite" aria-labelledby="cookie-heading"
+    aria-describedby="cookie-desc">
+    <div class="cookie-header">
+      <span class="cookie-icon" aria-hidden="true">🍪</span>
+      <h2 id="cookie-heading">We Value Your Privacy</h2>
+    </div>
+    <p id="cookie-desc">
+      We use cookies to improve your user experience, analyze website traffic, and personalize content. By clicking
+      "Accept Cookies", you consent to our use of cookies.
+    </p>
+    <div class="cookie-actions">
+      <button id="accept-cookies-btn" class="accept-btn" onclick="acceptCookies()">Accept Cookies</button>
+    </div>
+  </div>
+
+</body>
+
+</html>

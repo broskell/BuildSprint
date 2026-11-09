@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Interactive browser-based quiz with instant feedback, live scoring, and timed challenges.">
+  <title>BrainSpark — Interactive Quiz Challenge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="background-decorations" aria-hidden="true">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <main class="app-container">
+    <!-- Header / Brand -->
+    <header class="app-header">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">BrainSpark<span class="logo-accent">Quiz</span></span>
+      </div>
+    </header>
+
+    <!-- Screen 1: Start Screen -->
+    <section id="start-screen" class="view-panel active" aria-labelledby="start-title">
+      <div class="card start-card">
+        <div class="badge-pill">
+          <span class="pulse-dot"></span>
+          <span>Knowledge Challenge</span>
+        </div>
+
+        <h1 id="start-title" class="hero-title">Test Your Web & Tech Knowledge</h1>
+        <p class="hero-description">
+          Put your skills to the test with our rapid-fire interactive quiz. Answer multiple-choice questions, earn
+          points, and get real-time feedback with detailed explanations.
+        </p>
+
+        <div class="quiz-info-grid">
+          <div class="info-card">
+            <span class="info-icon">❓</span>
+            <div class="info-content">
+              <h3>6 Questions</h3>
+              <p>Curated tech & web dev trivia</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon">⏱️</span>
+            <div class="info-content">
+              <h3>60s per Question</h3>
+              <p>Timer auto-skips on timeout</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon">🎯</span>
+            <div class="info-content">
+              <h3>Scoring Rules</h3>
+              <p>+1 for correct, -1 on timeout</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <span class="info-icon">💡</span>
+            <div class="info-content">
+              <h3>Instant Feedback</h3>
+              <p>Color-coded results & answers</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="rules-summary">
+          <p><strong>Note:</strong> Once you select an answer, your choice is locked. Keep an eye on the clock — if time
+            runs out before you answer, 1 point is deducted and the quiz moves forward!</p>
+        </div>
+
+        <button id="start-btn" class="btn btn-primary btn-large">
+          <span>Start Quiz Challenge</span>
+          <svg class="btn-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Screen 2: Quiz Question Screen -->
+    <section id="quiz-screen" class="view-panel" aria-labelledby="question-text" hidden>
+      <div class="card quiz-card">
+        <!-- Top Status Bar: Progress, Timer, Live Score -->
+        <div class="quiz-top-bar">
+          <div class="status-meta">
+            <span id="question-tracker" class="meta-badge">Question 1 of 6</span>
+            <span id="live-score-badge" class="meta-badge score-badge">Score: 0</span>
+          </div>
+
+          <div class="timer-widget" id="timer-widget" role="timer" aria-live="polite">
+            <div class="timer-visual-ring">
+              <svg width="44" height="44" viewBox="0 0 44 44">
+                <circle class="ring-bg" cx="22" cy="22" r="18" />
+                <circle id="timer-ring-progress" class="ring-fg" cx="22" cy="22" r="18" />
+              </svg>
+              <span id="timer-count" class="timer-number">60</span>
+            </div>
+            <span class="timer-label">sec left</span>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-bar-container" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="6"
+          id="progress-container">
+          <div id="progress-fill" class="progress-fill" style="width: 16.66%;"></div>
+        </div>
+
+        <!-- Question Body -->
+        <div class="question-body">
+          <div id="category-tag" class="category-tag">Web Development</div>
+          <h2 id="question-text" class="question-title">Question loading...</h2>
+        </div>
+
+        <!-- Answer Options Buttons -->
+        <div id="options-container" class="options-grid" role="group" aria-label="Answer options">
+          <!-- Dynamic Answer Buttons injected here -->
+        </div>
+
+        <!-- Feedback & Explanation Banner -->
+        <div id="feedback-banner" class="feedback-banner" hidden>
+          <div class="feedback-header">
+            <span id="feedback-icon" class="feedback-icon">✓</span>
+            <span id="feedback-title" class="feedback-title">Correct! Well done.</span>
+          </div>
+          <p id="feedback-explanation" class="feedback-explanation"></p>
+        </div>
+
+        <!-- Action footer (Next Question button) -->
+        <div class="quiz-footer">
+          <button id="next-btn" class="btn btn-primary" hidden>
+            <span id="next-btn-text">Next Question</span>
+            <svg class="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: Results & Review Screen -->
+    <section id="results-screen" class="view-panel" aria-labelledby="results-title" hidden>
+      <div class="card results-card">
+        <!-- Results Header & Score Celebration -->
+        <div class="results-header">
+          <div id="result-icon-badge" class="result-icon-badge">🏆</div>
+          <h1 id="results-title" class="hero-title">Quiz Completed!</h1>
+          <p id="results-subtitle" class="results-subtitle">Here is how you performed across all questions.</p>
+        </div>
+
+        <!-- Highlight Score Banner -->
+        <div class="score-showcase">
+          <div class="score-circle-display">
+            <span id="final-score-val" class="score-large">0</span>
+            <span id="final-max-score" class="score-denom">/ 6 pts</span>
+          </div>
+          <div class="score-grade-text">
+            <span id="score-grade-badge" class="grade-badge">Great Effort!</span>
+            <span id="score-accuracy" class="accuracy-text">Accuracy: 0%</span>
+          </div>
+        </div>
+
+        <!-- Performance Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-pill correct-stat">
+            <span class="stat-icon">✓</span>
+            <div>
+              <span id="stat-correct-count" class="stat-val">0</span>
+              <span class="stat-lbl">Correct (+1 each)</span>
+            </div>
+          </div>
+
+          <div class="stat-pill wrong-stat">
+            <span class="stat-icon">✕</span>
+            <div>
+              <span id="stat-wrong-count" class="stat-val">0</span>
+              <span class="stat-lbl">Incorrect (0 pts)</span>
+            </div>
+          </div>
+
+          <div class="stat-pill timeout-stat">
+            <span class="stat-icon">⏱️</span>
+            <div>
+              <span id="stat-timeout-count" class="stat-val">0</span>
+              <span class="stat-lbl">Timed Out (-1 each)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Results Breakdown Accordion/List -->
+        <div class="review-section">
+          <h2 class="review-title">Detailed Question Review</h2>
+          <div id="review-list" class="review-list">
+            <!-- Review items injected dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Retake / Restart Button -->
+        <div class="results-actions">
+          <button id="restart-btn" class="btn btn-primary btn-large">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <polyline points="23 20 23 14 17 14"></polyline>
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+            </svg>
+            <span>Retake Quiz</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

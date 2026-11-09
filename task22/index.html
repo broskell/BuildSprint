@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reddit Multi-Lane Client</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Serve over http (Live Server or npx serve task22). -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <main class="app">
+    <h1 class="app__title">Reddit Lanes</h1>
+
+    <div class="board-wrap">
+      <div id="lanes-board" class="lanes-board"></div>
+
+      <button type="button" id="add-lane-btn" class="add-lane-btn" aria-label="Add subreddit lane">
+        <span class="add-lane-btn__plus" aria-hidden="true">+</span>
+      </button>
+    </div>
+  </main>
+
+  <dialog id="add-dialog" class="add-dialog">
+    <form id="add-form" class="add-dialog__form" method="dialog">
+      <h2 class="add-dialog__title">Enter the name of subreddit</h2>
+      <input type="text" id="subreddit-input" class="add-dialog__input" placeholder="e.g. learnprogramming"
+        autocomplete="off" required>
+      <p id="add-error" class="add-dialog__error" hidden></p>
+      <button type="submit" id="add-submit" class="add-dialog__submit">Add Subreddit</button>
+    </form>
+  </dialog>
+
+</body>
+
+</html>

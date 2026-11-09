@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="showPage(1)">
+  <main class="card">
+    <div class="tabs" role="tablist">
+      <button class="tab active" id="tab-1" type="button" onclick="showPage(1)" role="tab">Page 1</button>
+      <button class="tab" id="tab-2" type="button" onclick="showPage(2)" role="tab">Page 2</button>
+      <button class="tab" id="tab-3" type="button" onclick="showPage(3)" role="tab">Page 3</button>
+      <button class="tab" id="tab-4" type="button" onclick="showPage(4)" role="tab">Page 4</button>
+    </div>
+
+    <p class="instructions">
+      Clicking each tab matches the ID from dummyData and replaces the present content. By default, Page 1 is displayed.
+    </p>
+
+    <section class="panel" id="contentDisplay" role="tabpanel"></section>
+
+    <p class="note">Content is dynamically fetched from dummyData based on the selected page ID.</p>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <main class="container">
+    <h1 class="heading">Custom Dropdown</h1>
+
+    <div class="dropdown" id="dropdown">
+      <button type="button" id="dropdown-trigger" class="dropdown__trigger" aria-haspopup="listbox"
+        aria-expanded="false" aria-controls="dropdown-list">
+        <span id="dropdown-label" class="dropdown__label is-placeholder">Select an Item</span>
+        <span class="dropdown__chevron" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </button>
+
+      <ul id="dropdown-list" class="dropdown__list" role="listbox" hidden>
+        <li class="dropdown__option" role="option" aria-selected="false">
+          <span class="dropdown__option-text">First Item</span>
+          <span class="option-check" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        </li>
+        <li class="dropdown__option" role="option" aria-selected="false">
+          <span class="dropdown__option-text">Second Item</span>
+          <span class="option-check" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        </li>
+        <li class="dropdown__option" role="option" aria-selected="false">
+          <span class="dropdown__option-text">Third Item</span>
+          <span class="option-check" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        </li>
+        <li class="dropdown__option" role="option" aria-selected="false">
+          <span class="dropdown__option-text">Fourth Item</span>
+          <span class="option-check" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        </li>
+        <li class="dropdown__option" role="option" aria-selected="false">
+          <span class="dropdown__option-text">Fifth Item</span>
+          <span class="option-check" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+</body>
+
+</html>
